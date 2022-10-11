@@ -1,9 +1,10 @@
 #!/bin/bash
-set -eou pipefail
+set -ou pipefail
 
 PRETTY_LINES=$(printf "=%.0s" {1..100})
 
-msg(){
+msg()
+{
     echo $PRETTY_LINES
     echo $1
     echo $PRETTY_LINES
@@ -12,7 +13,6 @@ msg(){
 setup_poetry()
 {
     echo "Checking if poetry is already installed on the system"
-    # Checking if poetry is installed on the user's system.
     if [[ $(type -P poetry) ]]; then
         echo -e "Poetry is already installed on the system\n"
     else
@@ -21,17 +21,25 @@ setup_poetry()
         # curl -sSL https://install.python-poetry.org | python -
     fi
 
-    msg "Initializing a new poetry project"
-    poetry init
+    msg "Installing poetry environment based on the existing pyproject.toml file"
+    poetry add \
+        flake8@^5 \
+        isort@^5.5 \
+        black@^22.9 \
+        pre-commit@^2.20 \
+        --dev
+    poetry install --no-root
     echo
 }
 
 install_hooks()
 {
-    # check for pre-commit in poetry and then install it
-    # yaml file will exist in the template but i'll still verify it's existence
-    # maybe i will include boilerplate toml file as well?
+    msg "Installing pre-commit hooks."
+    poetry run pre-commit install
+    echo
+}
 
 msg "Starting project setup"
 setup_poetry
 install_hooks
+msg "Local setup completed!"
