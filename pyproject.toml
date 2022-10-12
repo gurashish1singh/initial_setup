@@ -1,7 +1,7 @@
 [tool.poetry]
-name = ""
+name = "PLACEHOLDER PROJECT NAME"
 version = "0.1.0"
-description = ""
+description = "PLACEHOLDER DESCRIPTION OF THE PROJECT"
 authors = ["Gurashish Singh <gurashish1singh@gmail.com>"]
 
 [tool.poetry.dependencies]
