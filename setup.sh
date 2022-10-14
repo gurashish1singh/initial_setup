@@ -13,6 +13,7 @@ msg()
 setup_poetry()
 {
     echo "Checking if poetry is already installed on the system"
+    # This checks the system PATH for poetry
     if [[ $(type -P poetry) ]]; then
         echo -e "Poetry is already installed on the system\n"
     else
