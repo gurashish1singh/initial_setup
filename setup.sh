@@ -1,7 +1,7 @@
 #!/bin/bash
 set -eou pipefail
 
-PRETTY_LINES=$(printf "=%.0s" {1..100})
+PRETTY_LINES=$(printf "=%.0s" {1..80})
 
 msg()
 {
@@ -14,6 +14,7 @@ setup_poetry()
 {
     echo "Checking if poetry is already installed on the system"
     # This checks the system PATH for poetry
+    # TODO: #3 and #4 Fix check to handle other environments/terminals
     if [[ $(type -P poetry) ]]; then
         echo -e "Poetry is already installed on the system\n"
     else
@@ -25,11 +26,13 @@ setup_poetry()
 
     msg "Installing poetry environment based on the template pyproject.toml file"
     poetry add \
+        black@^22.9 \
         flake8@^5 \
         isort@^5.5 \
-        black@^22.9 \
         pre-commit@^2.20 \
         --dev
+    poetry add python-json-logger@^2 \
+        pyyaml@^6
     poetry install
     echo
 }
@@ -37,7 +40,7 @@ setup_poetry()
 install_hooks()
 {
     msg "Installing pre-commit hooks."
-    poetry run pre-commit install
+    poetry run pre-commit install --hook-type pre-commit --hook-type pre-push
     echo
 }
 
