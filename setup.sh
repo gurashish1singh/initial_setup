@@ -5,22 +5,19 @@ PRETTY_LINES=$(printf "=%.0s" {1..80})
 
 msg()
 {
-    echo $PRETTY_LINES
-    echo $1
-    echo $PRETTY_LINES
+    echo "$PRETTY_LINES"
+    echo "$1"
+    echo "$PRETTY_LINES"
 }
 
 setup_poetry()
 {
     echo "Checking if poetry is already installed on the system"
-    # This checks the system PATH for poetry
-    # TODO: #3 and #4 Fix check to handle other environments/terminals
-    if [[ $(type -P poetry) ]]; then
+    if [[ $(command -v poetry) ]]; then
         echo -e "Poetry is already installed on the system\n"
     else
         echo "Poetry is not installed."
         echo -e "Installing poetry from https://python-poetry.org/docs/ \n"
-        # I use Git bash but this can be updated for other terminal environments as well.
         curl -sSL https://install.python-poetry.org | python -
     fi
 

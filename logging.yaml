@@ -13,18 +13,13 @@ handlers:
     level: INFO
     formatter: simple
     stream: ext://sys.stdout
-  # file:
-  #   class: logging.FileHandler
-  #   level: DEBUG
-  #   formatter: json
-  #   filename: placeholder.log
-  #   mode: w
-  #   delay: True
-# loggers:
-#   ROOT DIR NAME:
-#     level: DEBUG
-#     handlers: [console]
-#     propagate: no
+  file:
+    class: logging.FileHandler
+    level: DEBUG
+    formatter: json
+    filename: placeholder.log
+    mode: w
+    delay: True
 root:
   level: DEBUG
   handlers: [console]

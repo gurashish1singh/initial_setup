@@ -13,7 +13,9 @@ repos:
     -   id: check-yaml
         stages: [push]
     -   id: end-of-file-fixer
+        stages: [push]
     -   id: trailing-whitespace
+        stages: [push]
 -   repo: local
     hooks:
     -   id: black
