@@ -27,7 +27,9 @@ setup_poetry()
         flake8@^5 \
         isort@^5.5 \
         pre-commit@^2.20 \
-        --dev
+        flake8-bugbear@^22 \
+        lizard@^1.17 \
+        --group dev
     poetry add python-json-logger@^2 \
         pyyaml@^6
     poetry install

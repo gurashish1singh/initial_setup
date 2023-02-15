@@ -28,10 +28,21 @@ repos:
     -   id: flake8
         name: Running flake8 from local poetry env
         entry: poetry run flake8 .
-        language: python
-        files: ".*.py"
+        language: system
+        pass_filenames: false
+        types:
+          - python
     -   id: isort
         name: Running isort from local poetry env
         entry: poetry run isort .
-        language: python
-        files: ".*.py"
+        language: system
+        types:
+          - python
+    -   id: lizard
+        name: Running lizard from local poetry env
+        entry: poetry run lizard
+        # Max 7 arguments allowed, show only warnings, sort by CCN, exclude .venv
+        args: ["--CCN", "8", "-a", "7", "-w", "-s", "cyclomatic_complexity", "-x", ".\\.venv\\*"]
+        language: system
+        types:
+          - python

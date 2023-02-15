@@ -1,19 +1,11 @@
 [tool.poetry]
 name = "PLACEHOLDER PROJECT NAME"
-version = "0.1.0"
+version = "1.0.0"
 description = "PLACEHOLDER DESCRIPTION OF THE PROJECT"
 authors = ["Gurashish Singh <gurashish1singh@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
-PyYAML = "^6"
-python-json-logger = "^2"
-
-[tool.poetry.dev-dependencies]
-flake8 = "^5"
-isort = "^5.5"
-black = "^22.9"
-pre-commit = "^2.20"
 
 [tool.black]
 line-length = 100
